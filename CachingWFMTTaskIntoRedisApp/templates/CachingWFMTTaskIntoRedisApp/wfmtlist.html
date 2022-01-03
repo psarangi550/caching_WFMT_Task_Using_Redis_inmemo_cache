@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<title>Title</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="form-group">
+        <form method="GET">
+            <input type="text" class="form-control" name="search" placeholder="Search CP Number"><br>
+            <p class="text-center"><input type="submit" class="btn btn-primary text-center mt-auto"></p><br>
+        </form>
+    </div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>CP Number</th>
+            <th>SNE ID</th>
+            <th>Scheme Number</th>
+            <th>TRS AREA</th>
+            <th>ESTIMATE</th>
+            <th>ACTIONS</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks %}
+        <tr>
+            <td>{{task.category.site}}</td>
+            <td>{{task.cp_number}}</td>
+            <td>{{task.sne_id}}</td>
+            <td>{{task.scheme_number}}</td>
+            <td>{{task.trs}}</td>
+            <td>{{task.estimate}}</td>
+            <td><a href="{% url 'redis' task.id %}" class="btn btn-primary">View Details</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+</html>
